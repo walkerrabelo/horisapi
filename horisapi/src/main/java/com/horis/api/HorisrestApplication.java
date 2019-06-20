@@ -8,7 +8,7 @@ public class HorisrestApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HorisrestApplication.class, args);
-		System.out.println("Active !");
+		System.out.println("Active and Running!");
 	}
 
 }
