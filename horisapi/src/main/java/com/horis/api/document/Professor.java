@@ -1,10 +1,12 @@
 package com.horis.api.document;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Professor {
 
+	@Id
 	private String id;
 	private String name;
 	private String area;
