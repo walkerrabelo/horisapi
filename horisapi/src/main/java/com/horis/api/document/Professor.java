@@ -1,5 +1,7 @@
 package com.horis.api.document;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,9 +10,11 @@ public class Professor {
 
 	@Id
 	private String id;
-	private String name;
+	private String nome;
 	private String area;
-	private boolean active;
+	private boolean ativo;
+	private List<Aula> aulas;
+	
 	/**
 	 * @return the id
 	 */
@@ -26,14 +30,14 @@ public class Professor {
 	/**
 	 * @return the name
 	 */
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 	/**
 	 * @param name the name to set
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String name) {
+		this.nome = name;
 	}
 	/**
 	 * @return the area
@@ -50,14 +54,14 @@ public class Professor {
 	/**
 	 * @return the active
 	 */
-	public boolean isActive() {
-		return active;
+	public boolean isAtivo() {
+		return ativo;
 	}
 	/**
 	 * @param active the active to set
 	 */
-	public void setActive(boolean active) {
-		this.active = active;
+	public void setAtivo(boolean active) {
+		this.ativo = active;
 	}
 		
 }
