@@ -63,5 +63,22 @@ public class Professor {
 	public void setAtivo(boolean active) {
 		this.ativo = active;
 	}
-		
+	/**
+	 * @return the aulas
+	 */
+	public List<Aula> getAulas() {
+		return aulas;
+	}
+	/**
+	 * @param aulas the aulas to set
+	 */
+	public void setAulas(List<Aula> aulas) {
+		this.aulas = aulas;
+	}
+
+	public void addAula(Aula aula) {
+		if (!this.aulas.contains(aula)) {
+			this.aulas.add(aula);
+		}
+	}
 }

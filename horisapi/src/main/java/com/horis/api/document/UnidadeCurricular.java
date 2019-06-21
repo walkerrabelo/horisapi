@@ -60,4 +60,14 @@ public class UnidadeCurricular {
 		this.area = area;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		UnidadeCurricular unidadeCurricular = (UnidadeCurricular)obj;
+		return this.nome.equals(unidadeCurricular.getNome())
+				&& this.cargaHoraria == unidadeCurricular.getCargaHoraria()
+				&& this.area.equals(unidadeCurricular.getArea());
+	}
+	
+	
 }

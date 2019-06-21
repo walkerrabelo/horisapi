@@ -73,6 +73,15 @@ public class Aula {
 	 */
 	public void setUnidadeCurricular(UnidadeCurricular unidadeCurricular) {
 		this.unidadeCurricular = unidadeCurricular;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		Aula aula = (Aula)obj;
+		return this.inicio.equals(aula.getInicio()) 
+				&& this.fim.equals(aula.getFim())
+				&& this.turma.equals(aula.getTurma())
+				&& this.unidadeCurricular.equals(aula.getUnidadeCurricular());
 	}	
 	
 }
