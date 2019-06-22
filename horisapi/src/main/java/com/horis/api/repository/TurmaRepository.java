@@ -3,14 +3,14 @@
  */
 package com.horis.api.repository;
 
-import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.horis.api.document.Turma;
+import com.horis.api.model.Turma;
 
 /**
  * @author Walker
  *
  */
-public interface TurmaRepository extends ReactiveMongoRepository<Turma, String> {
+public interface TurmaRepository extends JpaRepository<Turma, Integer> {
 
 }

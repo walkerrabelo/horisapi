@@ -1,26 +1,35 @@
-package com.horis.api.document;
+package com.horis.api.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.List;
 
-@Document
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+@Entity
 public class UnidadeCurricular {
 
 	@Id
-	private String id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
 	private String nome;
 	private int cargaHoraria;
 	private String area;
+	
+	@ManyToMany
+	private List<Curso> cursos;
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	/**
@@ -68,6 +77,17 @@ public class UnidadeCurricular {
 				&& this.cargaHoraria == unidadeCurricular.getCargaHoraria()
 				&& this.area.equals(unidadeCurricular.getArea());
 	}
-	
+	/**
+	 * @return the cursos
+	 */
+	public List<Curso> getCursos() {
+		return cursos;
+	}
+	/**
+	 * @param cursos the cursos to set
+	 */
+	public void setCursos(List<Curso> cursos) {
+		this.cursos = cursos;
+	}
 	
 }

@@ -1,9 +1,9 @@
 package com.horis.api.repository;
 
-import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.horis.api.document.UnidadeCurricular;
+import com.horis.api.model.UnidadeCurricular;
 
-public interface UnidadeCurricularRepository extends ReactiveMongoRepository<UnidadeCurricular, String> {
+public interface UnidadeCurricularRepository extends JpaRepository<UnidadeCurricular, Integer> {
 
 }

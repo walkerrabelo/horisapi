@@ -1,29 +1,38 @@
-package com.horis.api.document;
+package com.horis.api.model;
 
 import java.time.LocalDateTime;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-@Document
+@Entity
 public class Aula {
 
 	@Id
-	private String id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
 	private LocalDateTime inicio;
 	private LocalDateTime fim;
+	@ManyToOne
 	private Turma turma;
+	@ManyToOne
 	private UnidadeCurricular unidadeCurricular;
+	@ManyToOne
+	private Professor professor;
+
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	/**
@@ -82,6 +91,18 @@ public class Aula {
 				&& this.fim.equals(aula.getFim())
 				&& this.turma.equals(aula.getTurma())
 				&& this.unidadeCurricular.equals(aula.getUnidadeCurricular());
+	}
+	/**
+	 * @return the professor
+	 */
+	public Professor getProfessor() {
+		return professor;
+	}
+	/**
+	 * @param professor the professor to set
+	 */
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
 	}	
 	
 }

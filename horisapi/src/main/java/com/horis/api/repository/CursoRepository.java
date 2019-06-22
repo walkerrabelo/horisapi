@@ -1,9 +1,9 @@
 package com.horis.api.repository;
 
-import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.horis.api.document.Curso;
+import com.horis.api.model.Curso;
 
-public interface CursoRepository extends ReactiveMongoRepository<Curso, String> {
+public interface CursoRepository extends JpaRepository<Curso, Integer> {
 
 }

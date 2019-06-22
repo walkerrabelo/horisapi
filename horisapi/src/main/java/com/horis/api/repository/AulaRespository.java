@@ -3,14 +3,16 @@
  */
 package com.horis.api.repository;
 
-import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import java.util.List;
 
-import com.horis.api.document.Aula;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.horis.api.model.Aula;
 
 /**
  * @author Walker
  *
  */
-public interface AulaRespository extends ReactiveMongoRepository<Aula, String>{
-
+public interface AulaRespository extends JpaRepository<Aula, Integer>{
+	List<Aula> findByProfessorNome(String nomeProfessor);
 }
