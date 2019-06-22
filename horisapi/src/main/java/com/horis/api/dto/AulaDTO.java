@@ -21,9 +21,9 @@ public class AulaDTO {
 
 	private LocalDateTime inicio;
 	private LocalDateTime fim;
-	private String idTurma;
-	private String idUnidadeCurricular;
-	private String idProfessor;
+	private Integer idTurma;
+	private Integer idUnidadeCurricular;
+	private Integer idProfessor;
 	/**
 	 * @param inicio
 	 * @param fim
@@ -31,8 +31,8 @@ public class AulaDTO {
 	 * @param idUnidadeCurricular
 	 * @param idProfessor
 	 */
-	public AulaDTO(LocalDateTime inicio, LocalDateTime fim, String idTurma, String idUnidadeCurricular,
-			String idProfessor) {
+	public AulaDTO(LocalDateTime inicio, LocalDateTime fim, 
+			Integer idTurma, Integer idUnidadeCurricular, Integer idProfessor) {
 		this.inicio = inicio;
 		this.fim = fim;
 		this.idTurma = idTurma;
@@ -54,19 +54,19 @@ public class AulaDTO {
 	/**
 	 * @return the idTurma
 	 */
-	public String getIdTurma() {
+	public Integer getIdTurma() {
 		return idTurma;
 	}
 	/**
 	 * @return the idUnidadeCurricular
 	 */
-	public String getIdUnidadeCurricular() {
+	public Integer getIdUnidadeCurricular() {
 		return idUnidadeCurricular;
 	}
 	/**
 	 * @return the idProfessor
 	 */
-	public String getIdProfessor() {
+	public Integer getIdProfessor() {
 		return idProfessor;
 	}
 

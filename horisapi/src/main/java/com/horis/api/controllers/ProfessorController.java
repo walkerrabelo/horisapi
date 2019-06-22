@@ -1,5 +1,6 @@
 package com.horis.api.controllers;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,20 +14,23 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import com.horis.api.dto.ProfessorDto;
+import com.horis.api.dto.ProfessorFormDto;
 import com.horis.api.model.Professor;
 import com.horis.api.repository.ProfessorRepository;
 
 @RestController
-@RequestMapping("/professor")
+@RequestMapping("/professores")
 public class ProfessorController {
 
 	@Autowired
 	ProfessorRepository professorRepository;
 	
 	@GetMapping
-	public ResponseEntity<List<Professor>> getList() {
-		return ResponseEntity.ok(professorRepository.findAll());
+	public ResponseEntity<List<ProfessorDto>> getList() {
+		return ResponseEntity.ok(ProfessorDto.converter(professorRepository.findAll()));
 	}
 	
 	@GetMapping(value="/{id}")
@@ -40,8 +44,15 @@ public class ProfessorController {
 	
 	@PostMapping
 	@Transactional
-	public ResponseEntity<Professor> insert(@RequestBody Professor professor) {
-		return ResponseEntity.ok(professorRepository.save(professor));
+	public ResponseEntity<ProfessorDto> insert(
+			@RequestBody ProfessorFormDto professorFormDto,
+			UriComponentsBuilder uriBuilder) {
+		Professor professor = professorFormDto.getProfessor();
+		professorRepository.save(professor);
+		
+		URI uri = uriBuilder.path("/professores/{id}").buildAndExpand(professor.getId()).toUri();
+		
+		return ResponseEntity.created(uri).body(new ProfessorDto(professor));
 	}
 	
 	@PutMapping("/{id}")

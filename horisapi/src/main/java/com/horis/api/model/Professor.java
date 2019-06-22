@@ -1,5 +1,6 @@
 package com.horis.api.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -21,6 +22,15 @@ public class Professor {
 	@OneToMany(mappedBy = "professor")
 	private List<Aula> aulas;
 	
+	public Professor() {
+		// TODO Auto-generated constructor stub
+	}
+	public Professor(String nome, String area, boolean ativo) {
+		this.nome = nome;
+		this.area = area;
+		this.ativo = ativo;
+		this.aulas = new ArrayList<Aula>();
+	}
 	/**
 	 * @return the id
 	 */
