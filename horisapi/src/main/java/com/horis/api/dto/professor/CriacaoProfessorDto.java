@@ -1,4 +1,4 @@
-package com.horis.api.dto;
+package com.horis.api.dto.professor;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -9,8 +9,9 @@ import com.horis.api.model.Professor;
 
 public class CriacaoProfessorDto {
 
-	@NotNull @NotEmpty @Length(min = 5)
+	@NotNull @NotEmpty @Length(min = 8)
 	private String nome;
+	@NotNull @NotEmpty @Length(min = 5)
 	private String area;
 	private boolean ativo;
 	/**

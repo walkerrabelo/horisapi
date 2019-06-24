@@ -17,7 +17,7 @@ import com.horis.api.repository.UnidadeCurricularRepository;
  * @author Walker
  *
  */
-public class AulaDTO {
+public class AulaDto {
 
 	private LocalDateTime inicio;
 	private LocalDateTime fim;
@@ -31,7 +31,7 @@ public class AulaDTO {
 	 * @param idUnidadeCurricular
 	 * @param idProfessor
 	 */
-	public AulaDTO(LocalDateTime inicio, LocalDateTime fim, 
+	public AulaDto(LocalDateTime inicio, LocalDateTime fim, 
 			Integer idTurma, Integer idUnidadeCurricular, Integer idProfessor) {
 		this.inicio = inicio;
 		this.fim = fim;

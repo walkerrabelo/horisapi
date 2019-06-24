@@ -1,4 +1,4 @@
-package com.horis.api.dto;
+package com.horis.api.dto.professor;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,9 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.horis.api.dto.ProfessorDto;
-import com.horis.api.dto.AtualizacaoProfessorDto;
-import com.horis.api.dto.CriacaoProfessorDto;
+import com.horis.api.dto.professor.AtualizacaoProfessorDto;
+import com.horis.api.dto.professor.CriacaoProfessorDto;
+import com.horis.api.dto.professor.ProfessorDto;
 import com.horis.api.model.Professor;
 import com.horis.api.repository.ProfessorRepository;
 
@@ -46,9 +48,9 @@ public class ProfessorController {
 	@PostMapping
 	@Transactional
 	public ResponseEntity<ProfessorDto> insert(
-			@RequestBody CriacaoProfessorDto professorFormDto,
+			@RequestBody @Valid CriacaoProfessorDto criacaoProfessorDto,
 			UriComponentsBuilder uriBuilder) {
-		Professor professor = professorFormDto.getProfessor();
+		Professor professor = criacaoProfessorDto.getProfessor();
 		professorRepository.save(professor);
 		URI uri = uriBuilder.path("/professores/{id}").buildAndExpand(professor.getId()).toUri();
 		return ResponseEntity.created(uri).body(new ProfessorDto(professor));
@@ -57,7 +59,7 @@ public class ProfessorController {
 	@PutMapping("/{id}")
 	@Transactional
 	public ResponseEntity<ProfessorDto> update(@PathVariable Long id, 
-			@RequestBody AtualizacaoProfessorDto atualizacaoProfessorDto) {
+			@RequestBody @Valid AtualizacaoProfessorDto atualizacaoProfessorDto) {
 		Optional<Professor> optionalProfessor = professorRepository.findById(id);
 		if(optionalProfessor.isPresent()) {
 			// Extract this code to a DTO 

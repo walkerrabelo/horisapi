@@ -1,11 +1,18 @@
-package com.horis.api.dto;
+package com.horis.api.dto.professor;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
 
 import com.horis.api.model.Professor;
 import com.horis.api.repository.ProfessorRepository;
 
 public class AtualizacaoProfessorDto {
 
+	@NotNull @NotEmpty @Length(min = 8)
 	private String nome;
+	@NotNull @NotEmpty @Length(min = 5)
 	private String area;
 	private boolean ativo;
 	/**
@@ -60,7 +67,6 @@ public class AtualizacaoProfessorDto {
 		professor.setArea(this.area);
 		professor.setAtivo(this.ativo);
 		professor.setNome(this.nome);
-		
 		return professor;		
 	}
 }
