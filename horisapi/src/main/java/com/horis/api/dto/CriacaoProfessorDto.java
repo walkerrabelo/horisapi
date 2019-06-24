@@ -1,9 +1,15 @@
 package com.horis.api.dto;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.horis.api.model.Professor;
 
 public class CriacaoProfessorDto {
 
+	@NotNull @NotEmpty @Length(min = 5)
 	private String nome;
 	private String area;
 	private boolean ativo;
