@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -65,6 +66,17 @@ public class ProfessorController {
 			// Extract this code to a DTO 
 			Professor professor = atualizacaoProfessorDto.atualizar(id, professorRepository);
 			return ResponseEntity.ok(new ProfessorDto(professor));	
+		}
+		return ResponseEntity.notFound().build();
+	}
+	
+	@DeleteMapping("/{id}")
+	@Transactional
+	public ResponseEntity<?> remove(@PathVariable Long id){
+		Optional<Professor> optionalProfessor = professorRepository.findById(id);
+		if(optionalProfessor.isPresent()) {
+			professorRepository.deleteById(id);
+			return ResponseEntity.ok().build();
 		}
 		return ResponseEntity.notFound().build();
 	}
