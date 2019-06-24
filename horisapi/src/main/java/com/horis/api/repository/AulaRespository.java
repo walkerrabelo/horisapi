@@ -13,6 +13,6 @@ import com.horis.api.model.Aula;
  * @author Walker
  *
  */
-public interface AulaRespository extends JpaRepository<Aula, Integer>{
+public interface AulaRespository extends JpaRepository<Aula, Long>{
 	List<Aula> findByProfessorNome(String nomeProfessor);
 }

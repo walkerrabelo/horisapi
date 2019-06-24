@@ -7,7 +7,7 @@ import com.horis.api.model.Professor;
 
 public class ProfessorDto {
 	
-	private Integer id;
+	private Long id;
 	private String nome;
 	private String area;
 	private boolean ativo;
@@ -25,7 +25,7 @@ public class ProfessorDto {
 	/**
 	 * @return the id
 	 */
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 	/**
@@ -47,7 +47,7 @@ public class ProfessorDto {
 		return ativo;
 	}
 	
-	public static List<ProfessorDto> converter(List<Professor> professores){
+	public static List<ProfessorDto> toList(List<Professor> professores){
 		return professores.stream().map(ProfessorDto::new).collect(Collectors.toList());
 	}
 

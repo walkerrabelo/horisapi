@@ -14,28 +14,27 @@ public class Turma {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
+	private Long id;
 	@ManyToOne
 	private Curso curso;
-	
 	@OneToMany(mappedBy = "turma")
 	private List<Aula> aulas;
 	/**
 	 * @param id
 	 */
-	public Turma(Integer id) {
+	public Turma(Long id) {
 		this.id = id;
 	}
 	/**
 	 * @return the id
 	 */
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	/**

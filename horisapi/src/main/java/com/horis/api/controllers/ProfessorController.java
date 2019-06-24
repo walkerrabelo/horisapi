@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.horis.api.dto.ProfessorDto;
-import com.horis.api.dto.ProfessorFormDto;
+import com.horis.api.dto.AtualizacaoProfessorDto;
+import com.horis.api.dto.CriacaoProfessorDto;
 import com.horis.api.model.Professor;
 import com.horis.api.repository.ProfessorRepository;
 
@@ -30,14 +31,14 @@ public class ProfessorController {
 	
 	@GetMapping
 	public ResponseEntity<List<ProfessorDto>> getList() {
-		return ResponseEntity.ok(ProfessorDto.converter(professorRepository.findAll()));
+		return ResponseEntity.ok(ProfessorDto.toList(professorRepository.findAll()));
 	}
 	
 	@GetMapping(value="/{id}")
-	public ResponseEntity<Professor> getById(@PathVariable Integer id) {
+	public ResponseEntity<ProfessorDto> getById(@PathVariable Long id) {
 		Optional<Professor> optionalProfessor = professorRepository.findById(id);
 		if(optionalProfessor.isPresent()) {
-			return ResponseEntity.ok(optionalProfessor.get());	
+			return ResponseEntity.ok(new ProfessorDto(optionalProfessor.get()));	
 		}
 		return ResponseEntity.notFound().build();
 	}
@@ -45,27 +46,23 @@ public class ProfessorController {
 	@PostMapping
 	@Transactional
 	public ResponseEntity<ProfessorDto> insert(
-			@RequestBody ProfessorFormDto professorFormDto,
+			@RequestBody CriacaoProfessorDto professorFormDto,
 			UriComponentsBuilder uriBuilder) {
 		Professor professor = professorFormDto.getProfessor();
 		professorRepository.save(professor);
-		
 		URI uri = uriBuilder.path("/professores/{id}").buildAndExpand(professor.getId()).toUri();
-		
 		return ResponseEntity.created(uri).body(new ProfessorDto(professor));
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Professor> update(@PathVariable Integer id, @RequestBody Professor professor) {
+	@Transactional
+	public ResponseEntity<ProfessorDto> update(@PathVariable Long id, 
+			@RequestBody AtualizacaoProfessorDto atualizacaoProfessorDto) {
 		Optional<Professor> optionalProfessor = professorRepository.findById(id);
 		if(optionalProfessor.isPresent()) {
 			// Extract this code to a DTO 
-			Professor p = optionalProfessor.get();
-			p.setArea(professor.getArea());
-			p.setAtivo(professor.isAtivo());
-			p.setNome(professor.getNome());
-			p.setAulas(professor.getAulas());
-			return ResponseEntity.ok(professorRepository.save(p));	
+			Professor professor = atualizacaoProfessorDto.atualizar(id, professorRepository);
+			return ResponseEntity.ok(new ProfessorDto(professor));	
 		}
 		return ResponseEntity.notFound().build();
 	}

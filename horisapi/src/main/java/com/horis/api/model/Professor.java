@@ -14,11 +14,10 @@ public class Professor {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
+	private Long id;
 	private String nome;
 	private String area;
 	private boolean ativo;
-	
 	@OneToMany(mappedBy = "professor")
 	private List<Aula> aulas;
 	
@@ -34,13 +33,13 @@ public class Professor {
 	/**
 	 * @return the id
 	 */
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	/**

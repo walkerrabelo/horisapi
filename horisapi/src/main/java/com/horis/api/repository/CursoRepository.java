@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.horis.api.model.Curso;
 
-public interface CursoRepository extends JpaRepository<Curso, Integer> {
+public interface CursoRepository extends JpaRepository<Curso, Long> {
 
 }

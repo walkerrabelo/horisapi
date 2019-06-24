@@ -11,6 +11,6 @@ import com.horis.api.model.Turma;
  * @author Walker
  *
  */
-public interface TurmaRepository extends JpaRepository<Turma, Integer> {
+public interface TurmaRepository extends JpaRepository<Turma, Long> {
 
 }

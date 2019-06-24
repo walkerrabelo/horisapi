@@ -2,7 +2,7 @@ package com.horis.api.dto;
 
 import com.horis.api.model.Professor;
 
-public class ProfessorFormDto {
+public class CriacaoProfessorDto {
 
 	private String nome;
 	private String area;
@@ -12,7 +12,7 @@ public class ProfessorFormDto {
 	 * @param area
 	 * @param ativo
 	 */
-	public ProfessorFormDto(String nome, String area, boolean ativo) {
+	public CriacaoProfessorDto(String nome, String area, boolean ativo) {
 		this.nome = nome;
 		this.area = area;
 		this.ativo = ativo;
