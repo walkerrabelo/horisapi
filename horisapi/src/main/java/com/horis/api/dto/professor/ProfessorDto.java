@@ -1,7 +1,6 @@
 package com.horis.api.dto.professor;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import org.springframework.data.domain.Page;
 
 import com.horis.api.model.Professor;
 
@@ -47,8 +46,8 @@ public class ProfessorDto {
 		return ativo;
 	}
 	
-	public static List<ProfessorDto> toList(List<Professor> professores){
-		return professores.stream().map(ProfessorDto::new).collect(Collectors.toList());
+	public static Page<ProfessorDto> toList(Page<Professor> professores){
+		return professores.map(ProfessorDto::new);
 	}
 
 }

@@ -2,12 +2,14 @@ package com.horis.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 
 @SpringBootApplication
-public class HorisrestApplication {
+@EnableSpringDataWebSupport
+public class HorisApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HorisrestApplication.class, args);
+		SpringApplication.run(HorisApiApplication.class, args);
 		System.out.println("Active and Running!");
 	}
 
